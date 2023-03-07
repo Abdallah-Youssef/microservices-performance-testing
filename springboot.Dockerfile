@@ -8,13 +8,23 @@ FROM eclipse-temurin:11-alpine
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
 RUN chmod +x /wait
 
-RUN mkdir /usr/app
-WORKDIR /usr/app
-COPY ./ ./
+ENV HOME=/usr/app
+RUN mkdir -p $HOME
+WORKDIR $HOME
+ADD pom.xml $HOME
+ADD mvnw  $HOME
+ADD .mvn $HOME/.mvn
+RUN ./mvnw dependency:resolve
+
+# This part is split into two different steps: dependency:resolve and package
+# so that when you change the code, you don't have to redownload the dependencies
+
+COPY ./ $HOME
+
+# Skipping tests because running them requires access to the db which exist on the project network
+# while building happens on a different network 
+RUN ./mvnw package -Dmaven.test.skip 
 
 
-# Downloads maven dependencies and creates jar, leave it as a step to be cached 
-RUN ./mvnw install
-
-# wait for any conditions, then exectue the jar in  ./target
+# wait for any conditions, then exectue the jar
 CMD /wait && java -jar $(find ./target -name \*.jar)
