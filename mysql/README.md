@@ -1,5 +1,4 @@
-This folder contains a docker file that build a mysql image and creates the tables defined in ddl.sql
-It should be persistent using the volume mysql_data.
+This directory contains a docker compose file that starts the MySQL database and a GUI tool called adminer.
 
 The first time you run `docker compose up --build` will be very slow (up to 10 mins), **but make sure you wait until you see this log**:
 ```
