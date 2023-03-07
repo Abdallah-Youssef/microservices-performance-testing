@@ -12,13 +12,12 @@ services:
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=ratingsDB
     volumes:
-      - mysql_data:/var/lib/mysql
+      # This creates an anonymous volume associated with this container
+      # to clear it, run with "-V", docker compose up --build -V
+      - /var/lib/mysql
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
-
-volumes:
-  mysql_data:

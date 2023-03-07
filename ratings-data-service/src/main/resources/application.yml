@@ -1,0 +1,24 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: ratings-data-service
+  sql:
+    init:
+      mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:ratingsDB}:3306/ratingsDB
+    username: user
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka/

@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   discovery-server:
+    hostname: eureka
     image: project/discovery-server
     ports:
       - "8761:8761"
@@ -13,22 +14,28 @@ services:
     image: project/ratings-data-service
     ports:
       - "8083:8083"
+    environment:
+      WAIT_HOSTS: eureka:8761 
     build:
       context: ratings-data-service
       dockerfile: ../springboot.Dockerfile
 
-  movie-info-service:
-    image: project/movie-info-service
-    ports:
-      - "8082:8082"
-    build:
-      context: movie-info-service
-      dockerfile: ../springboot.Dockerfile
+  # movie-info-service:
+  #   image: project/movie-info-service
+  #   ports:
+  #     - "8082:8082"
+  #   environment:
+  #     WAIT_HOSTS: eureka:8761 
+  #   build:
+  #     context: movie-info-service
+  #     dockerfile: ../springboot.Dockerfile
   
-  movie-catalog-service:
-    image: project/movie-catalog-service
-    ports:
-      - "8081:8081"
-    build:
-      context: movie-catalog-service
-      dockerfile: ../springboot.Dockerfile
+  # movie-catalog-service:
+  #   image: project/movie-catalog-service
+  #   environment:
+  #     WAIT_HOSTS: eureka:8761 
+  #   ports:
+  #     - "8081:8081"
+  #   build:
+  #     context: movie-catalog-service
+  #     dockerfile: ../springboot.Dockerfile
