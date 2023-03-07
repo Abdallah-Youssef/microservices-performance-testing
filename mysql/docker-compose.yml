@@ -2,6 +2,7 @@ version: "3.7"
 
 services:
   ratingsDB:
+    hostname: ratingsDB  
     image: project/mysql
     build: ./
     ports:
@@ -15,9 +16,17 @@ services:
       # This creates an anonymous volume associated with this container
       # to clear it, run with "-V", docker compose up --build -V
       - /var/lib/mysql
+    networks:
+      - project
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    networks:
+      - project
+
+networks:
+  project:
+    external: true

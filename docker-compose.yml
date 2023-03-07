@@ -9,6 +9,8 @@ services:
     build:
       context: discovery-server
       dockerfile: ../springboot.Dockerfile
+    networks:
+      - project
 
   ratings-data-service:
     image: project/ratings-data-service
@@ -19,6 +21,8 @@ services:
     build:
       context: ratings-data-service
       dockerfile: ../springboot.Dockerfile
+    networks:
+      - project
 
   # movie-info-service:
   #   image: project/movie-info-service
@@ -29,6 +33,8 @@ services:
   #   build:
   #     context: movie-info-service
   #     dockerfile: ../springboot.Dockerfile
+  #   networks:
+  #     - project
   
   # movie-catalog-service:
   #   image: project/movie-catalog-service
@@ -39,3 +45,9 @@ services:
   #   build:
   #     context: movie-catalog-service
   #     dockerfile: ../springboot.Dockerfile
+  #   networks:
+  #     - project
+
+networks:
+  project:
+    external: true
