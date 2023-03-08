@@ -1,7 +1,7 @@
 # This dockerfile can be used to create images for any of the springboot microservices
 
 # Use java version 11, alpine is a lightweight container
-FROM eclipse-temurin:11-alpine
+FROM eclipse-temurin:11
 
 # A script that allows the container to wait until some condition
 # The conditions can be defined in the docker compose
@@ -14,6 +14,7 @@ WORKDIR $HOME
 ADD pom.xml $HOME
 ADD mvnw  $HOME
 ADD .mvn $HOME/.mvn
+RUN chmod 777 mvnw
 RUN ./mvnw dependency:resolve
 
 # This part is split into two different steps: dependency:resolve and package
@@ -23,6 +24,7 @@ COPY ./ $HOME
 
 # Skipping tests because running them requires access to the db which exist on the project network
 # while building happens on a different network 
+RUN chmod 777 mvnw
 RUN ./mvnw package -Dmaven.test.skip 
 
 

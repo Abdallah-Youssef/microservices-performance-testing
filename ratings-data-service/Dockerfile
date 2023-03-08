@@ -1,6 +1,6 @@
 # FOR TESTING PURPOSES
 
-FROM eclipse-temurin:11-alpine
+FROM eclipse-temurin:11
 
 RUN mkdir /usr/app
 WORKDIR /usr/app
