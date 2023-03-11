@@ -13,13 +13,7 @@ message Empty {
 }
 
 message TrendingMovies {
-  message Movie {
-    string movieId = 1;
-    float rating = 2;
-    
-  }
-
-  repeated Movie movies = 1;
+  repeated string movieId = 1;
 }
 
 service MyService {
