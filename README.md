@@ -13,6 +13,7 @@ In this project, multiple microservices communicate with each other to provide t
 * __RatingsDataService__ provides the user's ratings for movies.
 * __MovieCatalogService__ acts as an accumulator that gets data from __RatingsDataService__ and __MovieInfoService__ to present it.
 * __DiscoveryServer__ is the Eureka server for service discovery.
+* __gRPC__ grpcurl --plaintext -d "{}" localhost:9090 com.hambola.MyService/GetTrendingMovies
 
 ![Screen Shot 2021-09-23 at 16 48 57](https://user-images.githubusercontent.com/22833948/134519062-0013cbf9-8a5f-4a43-ba14-635ccdbab04b.png)
 

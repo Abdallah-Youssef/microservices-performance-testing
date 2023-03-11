@@ -40,26 +40,27 @@ public class RatingsResource {
 
   @RequestMapping("/top")
   public List<String> getTrendingMovies() {
-    var allRatings = ratingsRepository.findAll();
+    return ratingsRepository.getTrendingMovies();
+    // var allRatings = ratingsRepository.findAll();
 
-    var count = new HashMap<String, Integer>();
-    var total = new HashMap<String, Integer>();
+    // var count = new HashMap<String, Integer>();
+    // var total = new HashMap<String, Integer>();
 
-    for (Rating r : allRatings) {
-      var id = r.getMovieId();
-      var c = count.getOrDefault(id, 0);
-      var v = total.getOrDefault(id, 0);
+    // for (Rating r : allRatings) {
+    //   var id = r.getMovieId();
+    //   var c = count.getOrDefault(id, 0);
+    //   var v = total.getOrDefault(id, 0);
 
-      count.put(id, c + 1);
-      total.put(id, v + r.getRating());
-    }
+    //   count.put(id, c + 1);
+    //   total.put(id, v + r.getRating());
+    // }
 
-    var avg = new HashMap<String, Double>();
-    for (String id : count.keySet()) {
-      avg.put(id, total.get(id) * 1.0 / count.get(id));
-    }
+    // var avg = new HashMap<String, Double>();
+    // for (String id : count.keySet()) {
+    //   avg.put(id, total.get(id) * 1.0 / count.get(id));
+    // }
 
-    return avg.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed()).limit(3)
-        .map(Map.Entry::getKey).collect(Collectors.toList());
+    // return avg.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed()).limit(3)
+    //     .map(Map.Entry::getKey).collect(Collectors.toList());
   }
 }
