@@ -19,25 +19,25 @@ services:
     networks:
       - project
 
-  ## add movie info cache service with mongoDb
-  # movieInfoCache:
-  #   hostname: movieInfoCache
-  #   image: project/mongo
-  #   build: ./
-  #   ports:
-  #     - "27017:27017"
-  #   networks:
-  #     - project
-  #   volumes:
-  #     - /data/db
+   # add movie info cache service with mongoDb
+  movieInfoCache:
+    hostname: movieInfoCache
+    image: mongo
+    build: ./
+    ports:
+      - "27017:27017"
+    networks:
+      - project
+    volumes:
+      - /data/db
 
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
-  #   networks:
-  #     - project
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - project
 
 networks:
   project:
