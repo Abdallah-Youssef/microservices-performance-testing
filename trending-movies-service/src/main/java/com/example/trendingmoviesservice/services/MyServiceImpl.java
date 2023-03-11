@@ -16,7 +16,7 @@ public class MyServiceImpl extends MyServiceGrpc.MyServiceImplBase {
   public void getTrendingMovies(com.hambola.Empty request,
       io.grpc.stub.StreamObserver<com.hambola.TrendingMovies> responseObserver) {
 
-    final String url = "http://localhost:8083/ratings/top/";
+    final String url = "http://ratings-data-service:8083/ratings/top/";
     final RestTemplate restTemplate = new RestTemplate();
 
     String[] l = restTemplate.getForObject(url, String[].class);

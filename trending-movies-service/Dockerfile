@@ -20,7 +20,6 @@ COPY ./grpc-interface/target/ /usr/app/target/
 RUN chmod 777 mvnw
 RUN ./mvnw dependency:resolve
 
-
 # This part is split into two different steps: dependency:resolve and package
 # so that when you change the code, you don't have to redownload the dependencies
 
@@ -33,4 +32,4 @@ RUN ./mvnw package -Dmaven.test.skip
 
 
 # # wait for any conditions, then exectue the jar
-CMD /wait && java -jar trending-movies-service-0.0.1-SNAPSHOT.jar
+CMD /wait && java -jar ./target/trending-movies-service-0.0.1-SNAPSHOT.jar

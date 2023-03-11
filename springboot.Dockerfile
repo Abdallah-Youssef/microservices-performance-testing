@@ -17,8 +17,6 @@ ADD .mvn $HOME/.mvn
 RUN chmod 777 mvnw
 RUN ./mvnw dependency:resolve
 
-# Copy gRPC classes and jar
-COPY ../grpc-interface/target/ /usr/app/target/
 
 # This part is split into two different steps: dependency:resolve and package
 # so that when you change the code, you don't have to redownload the dependencies
@@ -27,9 +25,9 @@ COPY ./ $HOME
 
 # Skipping tests because running them requires access to the db which exist on the project network
 # while building happens on a different network 
-# RUN chmod 777 mvnw
-# RUN ./mvnw package -Dmaven.test.skip 
+RUN chmod 777 mvnw
+RUN ./mvnw package -Dmaven.test.skip 
 
 
 # # wait for any conditions, then exectue the jar
-# CMD /wait && java -jar $(find ./target -name \*.jar)
+CMD /wait && java -jar $(find ./target -name \*.jar)

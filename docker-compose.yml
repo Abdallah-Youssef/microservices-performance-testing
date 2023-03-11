@@ -17,47 +17,49 @@ services:
     environment:
       WAIT_HOSTS: eureka:8761
     ports:
-      - "8084:8084"
+      - "9090:9090"
     build:
-      context: trending-movies-service
+      context: ./
+      dockerfile: ./trending-movies-service/Dockerfile
+    networks:
+      - project
+
+
+  ratings-data-service:
+    image: project/ratings-data-service
+    ports:
+      - "8083:8083"
+    environment:
+      WAIT_HOSTS: eureka:8761
+    build:
+      context: ratings-data-service
       dockerfile: ../springboot.Dockerfile
     networks:
       - project
-  # ratings-data-service:
-  #   image: project/ratings-data-service
-  #   ports:
-  #     - "8083:8083"
-  #   environment:
-  #     WAIT_HOSTS: eureka:8761
-  #   build:
-  #     context: ratings-data-service
-  #     dockerfile: ../springboot.Dockerfile
-  #   networks:
-  #     - project
 
-  # movie-info-service:
-  #   image: project/movie-info-service
-  #   ports:
-  #     - "8082:8082"
-  #   environment:
-  #     WAIT_HOSTS: eureka:8761
-  #   build:
-  #     context: movie-info-service
-  #     dockerfile: ../springboot.Dockerfile
-  #   networks:
-  #     - project
+  movie-info-service:
+    image: project/movie-info-service
+    ports:
+      - "8082:8082"
+    environment:
+      WAIT_HOSTS: eureka:8761
+    build:
+      context: movie-info-service
+      dockerfile: ../springboot.Dockerfile
+    networks:
+      - project
 
-  # movie-catalog-service:
-  #   image: project/movie-catalog-service
-  #   environment:
-  #     WAIT_HOSTS: eureka:8761
-  #   ports:
-  #     - "8081:8081"
-  #   build:
-  #     context: movie-catalog-service
-  #     dockerfile: ../springboot.Dockerfile
-  #   networks:
-  #     - project
+  movie-catalog-service:
+    image: project/movie-catalog-service
+    environment:
+      WAIT_HOSTS: eureka:8761
+    ports:
+      - "8081:8081"
+    build:
+      context: movie-catalog-service
+      dockerfile: ../springboot.Dockerfile
+    networks:
+      - project
 
 networks:
   project:
