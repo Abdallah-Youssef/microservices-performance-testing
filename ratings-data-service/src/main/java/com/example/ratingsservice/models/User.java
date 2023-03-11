@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -22,7 +21,6 @@ public class User {
   private String name;
 
   @OneToMany(mappedBy = "user")
-  @JsonManagedReference
   private List<Rating> ratings;
 
   public User() {
