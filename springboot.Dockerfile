@@ -18,13 +18,13 @@ RUN chmod 777 mvnw
 RUN ./mvnw dependency:resolve
 
 
-# This part is split into two different steps: dependency:resolve and package
-# so that when you change the code, you don't have to redownload the dependencies
+# # This part is split into two different steps: dependency:resolve and package
+# # so that when you change the code, you don't have to redownload the dependencies
 
 COPY ./ $HOME
 
-# Skipping tests because running them requires access to the db which exist on the project network
-# while building happens on a different network 
+# # Skipping tests because running them requires access to the db which exist on the project network
+# # while building happens on a different network 
 RUN chmod 777 mvnw
 RUN ./mvnw package -Dmaven.test.skip 
 
