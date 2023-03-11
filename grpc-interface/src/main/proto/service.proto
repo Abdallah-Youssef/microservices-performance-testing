@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package com.hambola;
+
+option java_multiple_files = true;
+option java_package = "com.hambola";
+option java_outer_classname = "HelloWorldProto";
+
+
+
+message Empty {
+
+}
+
+message TrendingMovies {
+  repeated string movieId = 1;
+}
+
+service MyService {
+    rpc GetTrendingMovies (Empty) returns (TrendingMovies) {}
+}
+

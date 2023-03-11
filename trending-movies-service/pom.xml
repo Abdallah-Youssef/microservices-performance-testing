@@ -10,9 +10,9 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.example</groupId>
-  <artifactId>movie-info-service</artifactId>
+  <artifactId>trending-movies-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>movie-info-service</name>
+  <name>ratings-service</name>
   <description>Demo project for Spring Boot</description>
   <properties>
     <java.version>11</java.version>
@@ -30,11 +30,6 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
-    
     <!--
     https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
     <dependency>
@@ -48,6 +43,28 @@
       <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
       <version>2.2.9.RELEASE</version>
     </dependency>
+
+
+    <dependency>
+      <groupId>net.devh</groupId>
+      <artifactId>grpc-server-spring-boot-starter</artifactId>
+      <version>2.14.0.RELEASE</version>
+
+    </dependency>
+
+    <dependency>
+      <groupId>com.hambola</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+      <artifactId>grpc-interface</artifactId>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/target/grpc-interface-0.0.1-SNAPSHOT.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>21.0</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -57,6 +74,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
+
   </build>
 
   <repositories>

@@ -8,7 +8,6 @@ import com.example.movieinfoservice.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +16,6 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/movies")
 public class MovieResource {
-
-    @Autowired
-    private MongoProperties mongoProperties;
 
     @Autowired
     MovieRepository movieRepository;

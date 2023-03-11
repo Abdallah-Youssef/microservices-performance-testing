@@ -13,7 +13,8 @@ spring:
       ddl-auto: create
     defer-datasource-initialization: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:ratingsDB}:3306/ratingsDB
+    # url: jdbc:mysql://${MYSQL_HOST:ratingsDB}:3306/ratingsDB
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/ratingsDB
     username: user
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,4 +22,5 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:8761/eureka/
+      # defaultZone: http://eureka:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/

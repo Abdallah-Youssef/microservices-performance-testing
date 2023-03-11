@@ -1,0 +1,11 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: trending-movies-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka/
