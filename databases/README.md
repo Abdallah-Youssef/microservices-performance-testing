@@ -1,4 +1,6 @@
-This directory contains a docker compose file that starts the MySQL database and a GUI tool called adminer.
+This directory contains a docker compose file that starts the MySQL and MongoDB database and a GUI tool called adminer.
+
+## SQL
 
 The first time you run `docker compose up --build` will be very slow (up to 10 mins), **but make sure you wait until you see this log**:
 ```
@@ -10,3 +12,6 @@ After it starts, there will be a UI at 8080:
 ![admin GUI login information](./adminer.jpg)
 
 password is `password`
+
+
+## MongoDb

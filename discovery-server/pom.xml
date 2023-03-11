@@ -29,6 +29,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>3.0.3.RELEASE</version>
+		</dependency>
+
 		<!--Fix missing dependencies in JDK 9 and higher -->
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
